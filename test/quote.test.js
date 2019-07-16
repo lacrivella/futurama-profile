@@ -2,9 +2,9 @@ const request = require('supertest');
 const app = require('../lib/app')
 
 describe('futurama', () => {
-  it('creates profile with post', () => {
+  it('creates profile with POST', () => {
     return request(app)
-      .post('/api/v1/profiles')
+      .post('/')
       .send({
         name: 'leigh-ann',
         favoriteCharacter: 'Bender'
@@ -16,10 +16,20 @@ describe('futurama', () => {
           tagline: expect.any(String)
         });
       });
-  }); 
+  });
+  it('GET profile', () => {
+    return request(app)
+      .get('/api/v1/profiles')
+      .then(res => {
+        expect(res.body).toEqual([{
+          name: 'leigh-ann',
+          favoriteCharacter: 'Bender',
+          tagline: expect.any(String)
+        }]);
+      }); 
+  });
 });
 
-//get profile
 //get profile by index
 //update favorite character
 //delete profile by index
