@@ -53,6 +53,17 @@ describe('futurama', () => {
         });
       });
   });
+  it('DELETES a profile by index', () => {
+    return request(app)
+      .delete('/api/v1/profiles/0')
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'leigh-ann',
+          favoriteCharacter: 'Fry',
+          tagline: expect.any(String)
+        });
+    });
+  });
 });
 
 
