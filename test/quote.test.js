@@ -28,8 +28,33 @@ describe('futurama', () => {
         }]);
       }); 
   });
+  it('Get profile by id', () => {
+    return request(app)
+      .get('/api/v1/profiles/0')
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'leigh-ann',
+          favoriteCharacter: 'Bender',
+          tagline: expect.any(String)
+        });
+      });
+  });
+  it('PATCH update favorite character', () => {
+    return request(app)
+      .patch('/api/v1/profiles/0')
+      .send({
+        favoriteCharacter: 'Fry'
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'leigh-ann',
+          favoriteCharacter: 'Fry',
+          tagline: expect.any(String)
+        });
+      });
+  });
 });
 
-//get profile by index
+
 //update favorite character
 //delete profile by index
