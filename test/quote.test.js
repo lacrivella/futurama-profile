@@ -17,6 +17,7 @@ describe('futurama', () => {
         });
       });
   });
+
   it('GET profile', () => {
     return request(app)
       .get('/api/v1/profiles')
@@ -28,6 +29,7 @@ describe('futurama', () => {
         }]);
       }); 
   });
+
   it('Get profile by id', () => {
     return request(app)
       .get('/api/v1/profiles/0')
@@ -39,6 +41,7 @@ describe('futurama', () => {
         });
       });
   });
+
   it('PATCH update favorite character', () => {
     return request(app)
       .patch('/api/v1/profiles/0')
@@ -53,6 +56,7 @@ describe('futurama', () => {
         });
       });
   });
+  
   it('DELETES a profile by index', () => {
     return request(app)
       .delete('/api/v1/profiles/0')
@@ -62,10 +66,6 @@ describe('futurama', () => {
           favoriteCharacter: 'Fry',
           tagline: expect.any(String)
         });
-    });
+      });
   });
 });
-
-
-//update favorite character
-//delete profile by index
