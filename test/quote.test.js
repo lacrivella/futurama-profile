@@ -56,7 +56,7 @@ describe('futurama', () => {
         });
       });
   });
-  
+
   it('DELETES a profile by index', () => {
     return request(app)
       .delete('/api/v1/profiles/0')
@@ -66,6 +66,14 @@ describe('futurama', () => {
           favoriteCharacter: 'Fry',
           tagline: expect.any(String)
         });
+      });
+  });
+
+  it('returns 404 error', () => {
+    return request(app)
+      .get('/nope')
+      .then(res => {
+        expect(res.text).toEqual(expect.stringContaining('File Not Found'));
       });
   });
 });
